@@ -1,8 +1,9 @@
 import classes from "./AuthForm.module.css";
-import { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import key from "../../env_var";
 import AuthContext from "../../store/auth-context";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 const AuthForm = () => {
   const emailInputRef = useRef();
@@ -55,28 +56,36 @@ const AuthForm = () => {
   };
 
   return (
-    <section className={classes.auth}>
-      <h1>Login</h1>
-      <form onSubmit={submitHandler}>
-        <div className={classes.control}>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" required ref={emailInputRef} />
+    <React.Fragment>
+      {!isLoading && (
+        <section className={classes.auth}>
+          <h1>Login</h1>
+          <form onSubmit={submitHandler}>
+            <div className={classes.control}>
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" required ref={emailInputRef} />
+            </div>
+            <div className={classes.control}>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                required
+                ref={passwordInputRef}
+              />
+            </div>
+            <div className={classes.actions}>
+              <button>Login</button>
+            </div>
+          </form>
+        </section>
+      )}
+      {isLoading && (
+        <div className="centered">
+          <LoadingSpinner />
         </div>
-        <div className={classes.control}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            required
-            ref={passwordInputRef}
-          />
-        </div>
-        <div className={classes.actions}>
-          {!isLoading && <button>Login</button>}
-          {isLoading && <p>Sending request...</p>}
-        </div>
-      </form>
-    </section>
+      )}
+    </React.Fragment>
   );
 };
 

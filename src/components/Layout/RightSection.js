@@ -14,10 +14,12 @@ const RightSection = () => {
         <h4>Инструменты и Технологии</h4>
         <ul>
           <li>HTML/CSS(SASS)</li>
+          <li>CSS-Modules/Styled-Components/React transition Group</li>
           <li>Адаптивная верстка (flexbox, grid)</li>
           <li>JavaScript (ES6, JQuery, Bootstrap)</li>
-          <li>React (Hooks, Redux, Router)</li>
+          <li>React (Hooks, Redux/Toolkit, Router)</li>
           <li>Git (Github)</li>
+          <li>Axios</li>
           <li>Webpack</li>
         </ul>
       </div>
@@ -34,11 +36,6 @@ const RightSection = () => {
           <li>
             <a href="https://github.com/devianse" target="_blank">
               GitHub
-            </a>
-          </li>
-          <li>
-            <a href="https://react-http-62ff3.web.app" target="_blank">
-              React Router Example
             </a>
           </li>
           <li>
